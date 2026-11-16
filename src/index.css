@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+:root {
+  --primary-dark: #1E1B4B;
+  --brand-indigo: #4338CA;
+  --ai-violet: #7C3AED;
+  --success-emerald: #10B981;
+  --background: #F8FAFC;
+  --card-white: #FFFFFF;
+
+  --active-display-font: "Bricolage Grotesque", "Noto Sans Bengali", ui-sans-serif, system-ui, sans-serif;
+  --active-body-font: "Plus Jakarta Sans", "Noto Sans Bengali", ui-sans-serif, system-ui, sans-serif;
+  --active-bengali-font: "Noto Sans Bengali", "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  --reading-scale: 1;
+}
+
+@theme {
+  --font-sans: var(--active-body-font);
+  --font-display: var(--active-display-font);
+  --font-bengali: var(--active-bengali-font);
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-primary-dark: #1E1B4B;
+  --color-brand-indigo: #4338CA;
+  --color-ai-violet: #7C3AED;
+  --color-success-emerald: #10B981;
+  --color-canvas: #F8FAFC;
+  --color-card-white: #FFFFFF;
+}
+
+@layer base {
+  html {
+    font-family: var(--active-body-font);
+    background-color: var(--background);
+    color: var(--primary-dark);
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--primary-dark);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--active-display-font);
+    color: var(--primary-dark);
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  .reading-prose {
+    font-size: calc(1rem * var(--reading-scale));
+    line-height: 1.72;
+  }
+
+  .reading-prose h2,
+  .reading-prose h3,
+  .reading-prose h4 {
+    font-family: var(--active-display-font);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* 3D Perspective & GPU Animation Utilities */
+.perspective-1100 {
+  perspective: 1100px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.bg-edu-grid {
+  background-image:
+    linear-gradient(to right, rgba(67, 56, 202, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(67, 56, 202, 0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, 9px, 0);
+  }
+}
+
+@keyframes orbitSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbGlowPulse {
+  0%, 100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orbit-spin {
+  animation: orbitSpin 18s linear infinite;
+  will-change: transform;
+}
+
+.animate-orb-glow {
+  animation: orbGlowPulse 4.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  animation: skeletonShimmer 1.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

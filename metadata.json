@@ -1,0 +1,6 @@
+{
+  "name": "EduGenius AI",
+  "description": "AI-powered educational platform by Apex Edutech Labs Inc. for Bengali and English learners across SSC, HSC, University, IELTS, and competitive exams.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
