@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // GitHub Pages serves this project from /AI-Education-Helper/, not the domain root.
+    base: '/AI-Education-Helper/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
